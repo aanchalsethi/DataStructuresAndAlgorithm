@@ -50,31 +50,23 @@ int celebrity(vector<vector<int>> &M, int n)
     // potential candidate
     int ans = st.top();
 
-    int zerocount = 0;
-
+    // Check row of ans
     for (int i = 0; i < n; i++)
     {
-        if (M[ans][i] == 0)
+        if (M[ans][i] != 0 && i != ans)
         {
-            zerocount++;
+            return -1;
         }
     }
 
-    if (zerocount != n)
-        return -1;
-
-    int onecount = 0;
-
+    // Check column of ans
     for (int i = 0; i < n; i++)
     {
-        if (M[i][ans] == 1)
+        if (M[i][ans] != 1 && i != ans)
         {
-            onecount++;
+            return -1;
         }
     }
-
-    if (onecount != n - 1)
-        return -1;
 
     return ans;
 }
